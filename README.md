@@ -33,6 +33,7 @@ Commands like `/start-session` are **Claude Code custom commands** — type them
 | `/create-cr` | Before any new work — creates a Change Request |
 | `/implement` | After a CR is approved — begins implementation |
 | `/review` | Before merging — runs the full review checklist |
+| `/release` | Prepare release: checklist, CHANGELOG, version bump, tag, deploy instructions |
 | `/gdpr-report` | Consolidated GDPR compliance report across all sources |
 | `/security-report` | Consolidated security posture report across all sources |
 

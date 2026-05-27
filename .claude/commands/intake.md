@@ -56,18 +56,33 @@ If this is a BOOTSTRAP project and no document was provided:
 
 1. **Initialize placeholders**: replace any remaining `YYYY-MM-DD` in session files with today's date.
 
-2. **Ask four questions, one at a time:**
+2. **Ask five questions, one at a time:**
    - "What does this product do, and who is it for?"
    - "What is the single most important thing it must do in version 1?"
    - "What is explicitly out of scope for now?"
    - "Do you have a tech stack in mind, or should we decide that later?"
+   - "Where will this be deployed? (e.g. Vercel, AWS, GCP, Azure, Fly.io, Heroku, Docker/Kubernetes, self-hosted — or unknown for now)"
 
 3. **Populate from answers:**
    - Write `specs/vision.md` from the first two answers
    - Write non-goals in `specs/vision.md` from the third
    - Note tech stack preference in `sessions/CURRENT-STATE.md`
+   - If deployment target is known: populate `specs/deployment.md` with platform, environment table, and a deployment skeleton appropriate for that platform (see deployment scaffolds below)
+   - If deployment target is unknown: note "Deployment target not yet decided" in `specs/deployment.md` Status field and `sessions/CURRENT-STATE.md`
 
-4. **Recommend next step:**
+4. **Deployment scaffolds** — use the matching skeleton when populating `specs/deployment.md`:
+
+   **Vercel**: Build = `npm run build`, Deploy = git push / Vercel CLI, Env vars in Vercel dashboard, Rollback = Vercel dashboard instant rollback
+   **AWS (ECS/Fargate)**: Build = Docker image, Deploy = push to ECR + ECS service update, Migrations before deploy, Rollback = previous task definition
+   **AWS (Lambda/Serverless)**: Build = `npm run build`, Deploy = `serverless deploy`, Rollback = `serverless rollback`
+   **GCP (Cloud Run)**: Build = Docker image, Deploy = `gcloud run deploy`, Rollback = `gcloud run services update-traffic`
+   **Azure (App Service)**: Build = platform-specific, Deploy = `az webapp deploy`, Rollback = deployment slots swap
+   **Fly.io**: Build = Dockerfile, Deploy = `fly deploy`, Rollback = `fly releases rollback`
+   **Heroku**: Build = auto on git push, Deploy = `git push heroku main`, Rollback = `heroku rollback`
+   **Docker / Kubernetes**: Build = Docker image + push to registry, Deploy = `kubectl apply` or Helm, Rollback = `kubectl rollout undo`
+   **Self-hosted**: Document manually — capture build, copy, restart, and health check commands
+
+5. **Recommend next step:**
    - "Run `/interview-and-define` to sharpen domain language and populate CONTEXT.md before creating your first CR."
 
 ---

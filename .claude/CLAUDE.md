@@ -138,6 +138,7 @@ Claude MUST ALWAYS:
 | `/create-cr` | Create a new change request with impact analysis |
 | `/review` | Run full review checklist |
 | `/implement` | Begin implementation from an approved CR |
+| `/release` | Prepare release: checklist, CHANGELOG, version bump, tag, deploy instructions |
 | `/gdpr-report` | Consolidated GDPR compliance report across all sources |
 | `/security-report` | Consolidated security posture report across all sources |
 
