@@ -67,6 +67,15 @@ Claude MUST NEVER:
 - **Units of measurement**: Never hardcode unit labels (kg, miles, °F, etc.) in the frontend. Stop, present Metric vs Imperial options to the human, wait for written authorization, document in the CR and `specs/ui-spec.md`, then implement with a shared conversion utility and a user-facing setting.
 - **Labels and text**: Never hardcode visible user-facing strings directly in components. Stop, present language strategy options (single-language with i18n infrastructure vs multi-language with locale switching) to the human, wait for written authorization, document in the CR and `specs/ui-spec.md`, then implement with the project's i18n utility.
 
+### Security (see `rules/security/RULE.md` and `.claude/agents/security.md` for full detail)
+
+- **Threat model required before implementation**: Never begin implementation of a CR without a completed Threat Model section reviewed by the human. Present OWASP Top 10 mapping and trust boundary analysis for every CR.
+- **Security review always required**: `reviews/SECURITY-REVIEW.md` must be completed for every CR before merge — not only for auth or integration changes.
+- **Secrets**: Never hardcode secrets, tokens, API keys, or passwords. Never log PII, tokens, or sensitive fields.
+- **Dangerous patterns**: Never use `eval()`, `dangerouslySetInnerHTML`, `innerHTML =`, raw SQL string interpolation, or `document.write` without a CR-documented security justification and human sign-off.
+- **Dependencies**: Never add a dependency without documenting its version and CVE check result in the CR.
+- **Human sign-off**: Never self-approve a security review. All security Approve decisions require human sign-off.
+
 ---
 
 ## Required Behavior

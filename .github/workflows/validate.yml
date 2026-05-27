@@ -70,3 +70,35 @@ jobs:
 
       - name: Run spec validation
         run: npx ts-node validation/spec-validation.ts
+
+  security:
+    name: Security validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run security validation (heuristics)
+        run: npx ts-node validation/security-validation.ts
+
+      - name: Secret scanning (TruffleHog)
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || '' }}
+          head: HEAD
+          extra_args: --only-verified
+
+      - name: Dependency vulnerability audit
+        run: |
+          if [ -f package.json ]; then
+            npm audit --audit-level=high
+          else
+            echo "No package.json found — skipping npm audit (add when project is initialized)"
+          fi

@@ -29,10 +29,15 @@
 - [ ] All existing tests pass
 
 ## Security
-- [ ] All new endpoints require auth (unless explicitly public)
-- [ ] All inputs validated
-- [ ] No secrets in code
-- [ ] No sensitive data in logs
+- [ ] Threat Model completed in CR and reviewed by human
+- [ ] `reviews/SECURITY-REVIEW.md` completed and passed
+- [ ] All new endpoints require auth (unless explicitly public in `specs/api.yaml`)
+- [ ] All inputs validated at trust boundaries
+- [ ] No hardcoded secrets, tokens, or API keys
+- [ ] No sensitive data or PII in logs
+- [ ] No dangerous patterns (`eval`, `dangerouslySetInnerHTML`, raw SQL interpolation)
+- [ ] New dependencies have documented CVE check in CR
+- [ ] Secret scanning passed in CI
 
 ## Performance
 - [ ] No N+1 queries
