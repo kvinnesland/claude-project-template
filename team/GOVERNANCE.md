@@ -31,39 +31,41 @@ Default roles (change or replace as needed):
 
 ## Permissions
 
-> Default: **anyone on the team can approve anything.**
+> Default: **anyone on the team can approve anything, including their own work.**
 > Override specific rules below if your project needs stricter controls.
 
 | Action | Default rule | Project override |
 |---|---|---|
-| Approve a CR | Any team member except the CR author | — |
+| Approve a CR | Any team member | — |
 | Sign off security review | Any team member | — |
 | Sign off GDPR review | Any team member | — |
 | Authorize a release | Any team member | — |
 | Approve architecture change | Any team member | — |
 | Merge to main | Any team member | — |
 
-**To override**: replace "—" with the required role, e.g. "Owner only" or "Owner or Lead".
+**To override**: replace "—" with the required role or constraint, e.g.:
+- `"Owner only"` — restricts to a specific role
+- `"Any team member except the CR author"` — disables self-approval for this action
+- `"Requires 2 approvals"` — raises the threshold
 
 ---
 
-## Hard Rules (always enforced, regardless of role)
+## Optional Restrictions
 
-These rules apply to every project and cannot be overridden:
+Uncomment and configure as needed for your project:
 
-- **No self-approval**: you cannot approve your own CR, your own security review, or your own GDPR review
-- **No self-merge**: you cannot merge a branch you authored without at least one other approval
-- **Human sign-off required**: Claude can produce reviews and recommendations but cannot be the sole approver on any CR, security review, or GDPR review — a human must approve
+```
+## Active restrictions
+# | Approve a CR           | Any team member except the CR author   |
+# | Merge to main          | Requires at least 1 other approval     |
+# | Sign off security review | Owner only                           |
+```
+
+---
+
+## Always Required
+
+These apply regardless of permission configuration:
+
+- **Human sign-off**: Claude can produce reviews and recommendations but cannot be the sole approver — a human must sign off
 - **Author recorded**: every CR, review, decision, and ledger entry must record the name/handle of the person responsible
-
----
-
-## Minimum Approval Requirements
-
-| Artefact | Minimum approvals | Who |
-|---|---|---|
-| CR (Draft → Approved) | 1 | Any team member except author |
-| Security review | 1 | Any team member (human) |
-| GDPR review | 1 | Any team member (human) |
-| Release | 1 | Any team member |
-| Architecture decision | 1 | Any team member except proposer |

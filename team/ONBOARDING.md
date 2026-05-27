@@ -102,7 +102,7 @@ These are the most important things to know. The full rules are in `rules/` and 
 | Rule | Why |
 |---|---|
 | No code without an approved CR | Prevents undocumented changes and architectural drift |
-| No self-approval | You cannot approve your own CR or your own review |
+| Self-approval is allowed by default | Projects can restrict this in `team/GOVERNANCE.md` |
 | Specs update before code | `specs/` is the source of truth — code follows specs, never the reverse |
 | Every commit references a CR | `git commit -m "Add login endpoint (CR-003)"` — the hook enforces this |
 | No hardcoded secrets | Use environment variables. The CI pipeline scans for secrets. |

@@ -116,13 +116,18 @@ Claude MUST ALWAYS:
 
 Read `team/GOVERNANCE.md` and `team/MEMBERS.md` at session start if they exist.
 
-Hard rules — always enforced:
-- **No self-approval**: never accept a CR, security review, or GDPR review approved by its own author
-- **No self-merge**: flag if a branch author attempts to merge without another approval
+Default: **anyone on the team can approve anything, including their own work.**
+This is a template — projects configure their own restrictions in `team/GOVERNANCE.md`.
+
+Always enforced:
 - **Human sign-off required**: Claude may produce reviews and recommendations, but a human listed in `team/MEMBERS.md` must give final approval on every CR, security review, and GDPR review
 - **Unknown approver**: if an approver's name is not in `team/MEMBERS.md`, flag it before accepting the approval
 
-For all other permission questions, follow the rules defined in `team/GOVERNANCE.md`.
+Optional restrictions (configured in `team/GOVERNANCE.md`):
+- No self-approval — enable by setting "Any team member except the CR author" for the relevant action
+- No self-merge — enable by setting "Requires at least 1 other approval" on merge to main
+
+For all permission questions, follow the rules defined in `team/GOVERNANCE.md`.
 
 ---
 
