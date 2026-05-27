@@ -22,4 +22,4 @@ None yet.
 None yet.
 
 ## Last Structural Change
-YYYY-MM-DD — Repository initialized.
+2026-05-27 — Repository initialized.

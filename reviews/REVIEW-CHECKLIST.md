@@ -1,6 +1,7 @@
 # REVIEW-CHECKLIST.md
 
-> Run via `/review` before any merge. Every item must be PASSED, FAILED, or WAIVED (with reason).
+> **Single source of truth for reviews.** The `/review` command runs this checklist.
+> Every item must be marked PASSED, FAILED, or WAIVED (with written reason).
 
 ## Traceability
 - [ ] Change covered by approved CR
@@ -49,4 +50,15 @@
 - [ ] Matches `specs/ui-spec.md`
 - [ ] Design tokens used
 - [ ] Loading, error, and empty states handled
-- [ ] Accessible markup
+- [ ] Accessible markup (WCAG 2.1 AA minimum)
+
+## Frontend Localization (if frontend changes)
+- [ ] Date/time format authorized in CR and documented in `specs/ui-spec.md`
+- [ ] All dates rendered through shared formatting utility — no inline format strings
+- [ ] User-facing date format setting exists (or is in scope of this CR)
+- [ ] Units authorized (Metric / Imperial) in CR and documented in `specs/ui-spec.md`
+- [ ] All units rendered through shared conversion utility — no inline unit labels
+- [ ] User-facing unit system setting exists (or is in scope of this CR)
+- [ ] Language strategy authorized in CR and documented in `specs/ui-spec.md`
+- [ ] All visible strings externalized through i18n utility — no raw literals in components
+- [ ] User-facing language setting exists if multi-language authorized

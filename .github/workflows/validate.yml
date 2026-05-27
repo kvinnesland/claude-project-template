@@ -1,0 +1,72 @@
+name: Validate
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  traceability:
+    name: Traceability validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts 2>/dev/null || true
+
+      - name: Run traceability validation
+        run: npx ts-node validation/traceability-validation.ts
+
+      - name: Check commit messages reference a CR
+        if: github.event_name == 'pull_request'
+        run: |
+          git log origin/${{ github.base_ref }}..HEAD --format="%s" | while read msg; do
+            if ! echo "$msg" | grep -qE '(CR-[0-9]+|^Merge|^Revert|^INFRA:)'; then
+              echo "FAIL: Commit missing CR reference: $msg"
+              exit 1
+            fi
+          done
+          echo "OK: All commits reference a CR"
+
+  architecture:
+    name: Architecture validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts 2>/dev/null || true
+
+      - name: Run architecture validation
+        run: npx ts-node validation/architecture-validation.ts
+
+  spec:
+    name: Spec validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts 2>/dev/null || true
+
+      - name: Run spec validation
+        run: npx ts-node validation/spec-validation.ts

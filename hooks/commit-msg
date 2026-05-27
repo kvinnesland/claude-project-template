@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# commit-msg hook — enforces CR reference in every commit message.
+#
+# Install:
+#   cp hooks/commit-msg .git/hooks/commit-msg
+#   chmod +x .git/hooks/commit-msg
+#
+# Bypass (emergency only, requires justification in commit body):
+#   git commit --no-verify -m "INFRA: ..."
+
+commit_msg=$(cat "$1")
+
+# Allow merge commits, revert commits, and infra commits explicitly tagged INFRA
+if echo "$commit_msg" | grep -qE '^(Merge|Revert|INFRA):'; then
+  exit 0
+fi
+
+# Require CR-NNN reference
+if ! echo "$commit_msg" | grep -qE 'CR-[0-9]+'; then
+  echo ""
+  echo "ERROR: Commit message must reference a Change Request."
+  echo "  Expected format: <description> (CR-001)"
+  echo "  Example: Add user login endpoint (CR-003)"
+  echo ""
+  echo "  For infrastructure commits not tied to a CR, prefix with INFRA:"
+  echo "  Example: INFRA: update .gitignore"
+  echo ""
+  exit 1
+fi
+
+exit 0

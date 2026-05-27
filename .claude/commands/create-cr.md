@@ -26,47 +26,7 @@ Analyze and document:
 
 ## 3. Create CR File
 
-Create `/change-requests/CR-XXX-short-title.md` using the template below.
-Assign the next available CR number.
+Create `/change-requests/CR-XXX-short-title.md` by copying `change-requests/CR-TEMPLATE.md`.
+Assign the next available CR number. Fill in all sections — no section may be left blank.
 
-## 4. CR Template
-
-```
-# CR-XXX: [Title]
-
-Status: Draft
-Created: YYYY-MM-DD
-
-## Business Goal
-## Problem Statement
-## Proposed Solution
-
-## Impact Analysis
-
-Affected Specs:
-- [ ] specs/entities.md
-- [ ] specs/api.yaml
-- [ ] specs/flows.md
-- [ ] specs/architecture.md
-- [ ] specs/nfr.md
-- [ ] specs/ui-spec.md
-
-Affected Components:
-Database Impact:
-API Impact:
-UX Impact:
-Security Impact:
-Performance Impact:
-
-## Acceptance Criteria
-- [ ]
-
-## Required Tests
-- [ ] Unit:
-- [ ] Integration:
-
-## Rollback Strategy
-## Migration Strategy
-## Risks
-## Dependencies
-```
+The template is the single source of truth: `change-requests/CR-TEMPLATE.md`.

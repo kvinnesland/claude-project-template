@@ -17,7 +17,7 @@ Files to check:
 - `sessions/DECISIONS.md`
 - `sessions/ARCHITECTURE-STATE.md`
 
-How to detect first run: if `sessions/CURRENT-STATE.md` contains `YYYY-MM-DD`, this is an uninitialized project. Replace all placeholders, save the files, then proceed with normal session startup.
+How to detect first run: check all five session files listed above for the string `YYYY-MM-DD`. If any file contains it, this is an uninitialized project. Replace all occurrences across all five files, save them, then proceed with normal session startup.
 
 ## Session Startup — Required Steps
 
@@ -60,6 +60,12 @@ Claude MUST NEVER:
 - Duplicate abstractions that already exist
 - Silently change architecture
 - Refactor unrelated systems during feature work
+
+### Frontend — Localization (see `rules/frontend-localization/RULE.md` for full detail)
+
+- **Date/time formats**: Never hardcode a date or time format in the frontend. Stop, present format options to the human, wait for written authorization, document in the CR and `specs/ui-spec.md`, then implement with a shared formatting utility and a user-facing setting.
+- **Units of measurement**: Never hardcode unit labels (kg, miles, °F, etc.) in the frontend. Stop, present Metric vs Imperial options to the human, wait for written authorization, document in the CR and `specs/ui-spec.md`, then implement with a shared conversion utility and a user-facing setting.
+- **Labels and text**: Never hardcode visible user-facing strings directly in components. Stop, present language strategy options (single-language with i18n infrastructure vs multi-language with locale switching) to the human, wait for written authorization, document in the CR and `specs/ui-spec.md`, then implement with the project's i18n utility.
 
 ---
 
