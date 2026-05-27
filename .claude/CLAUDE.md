@@ -89,6 +89,17 @@ Claude MUST NEVER:
 
 ---
 
+## Branching Strategy
+
+Default: one branch per CR, named `feature/CR-XXX-short-title`.
+Merge to `main` only after `/review` passes.
+Document the active branch in `sessions/CURRENT-STATE.md`.
+
+If the project uses a different strategy (trunk-based, gitflow, etc.),
+document it in `sessions/CURRENT-STATE.md` and follow that instead.
+
+---
+
 ## Required Behavior
 
 Claude MUST ALWAYS:
