@@ -26,7 +26,8 @@ Commands like `/start-session` are **Claude Code custom commands** — type them
 
 | Command | When to use |
 |---|---|
-| `/start-session` | Beginning of every session — loads state and produces a plan |
+| `/intake` | **Start here** — first session setup, import PRD/spec/CR, feed in backlog |
+| `/start-session` | Beginning of every subsequent session — loads state and produces a plan |
 | `/end-session` | End of every session — updates all state files |
 | `/interview-and-define` | First session, or when domain language is unclear |
 | `/create-cr` | Before any new work — creates a Change Request |
@@ -72,10 +73,9 @@ Keep `main` always in a deployable state.
 ## First session checklist
 
 - [ ] `sh hooks/install.sh` — install commit-msg hook
-- [ ] `/interview-and-define` — define domain language, populate `CONTEXT.md`
-- [ ] Fill in `specs/vision.md` and `specs/requirements.md`
-- [ ] Define tech stack in `specs/nfr.md`
-- [ ] `/create-cr` — create CR-001 for your first feature
+- [ ] `/intake` — import your PRD, vision doc, or spec; or start with guided setup if you have nothing yet
+- [ ] `/interview-and-define` — sharpen domain language, populate `CONTEXT.md`
+- [ ] `/create-cr` — create CR-001 with full impact analysis before implementation
 
 ## Structure
 

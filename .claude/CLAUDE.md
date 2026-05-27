@@ -131,6 +131,7 @@ Claude MUST ALWAYS:
 
 | Command | Purpose |
 |---|---|
+| `/intake` | First session setup, import PRD/spec/CR documents, feed in backlog |
 | `/start-session` | Load state, identify blockers, generate plan |
 | `/end-session` | Summarize work, update all orchestration files |
 | `/interview-and-define` | Interview plan, sharpen domain language, update CONTEXT.md |
