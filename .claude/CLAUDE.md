@@ -76,6 +76,17 @@ Claude MUST NEVER:
 - **Dependencies**: Never add a dependency without documenting its version and CVE check result in the CR.
 - **Human sign-off**: Never self-approve a security review. All security Approve decisions require human sign-off.
 
+### GDPR and Privacy (see `rules/gdpr/RULE.md` and `.claude/agents/privacy.md` for full detail)
+
+- **Personal data requires GDPR Impact section**: Never implement a CR that introduces, modifies, or removes personal data without a completed GDPR Impact section reviewed by the human. This applies to fields, logs, API responses, and third-party integrations.
+- **Legal basis mandatory**: Never collect or process personal data without a documented Article 6 legal basis. Never collect sensitive data (Article 9) without explicit consent or a documented Article 9(2) exception.
+- **No PII in logs**: Never log personal data (name, email, phone, IP, tokens) in plain text. Use masking or pseudonymization.
+- **Retention and deletion**: Never implement storage of personal data without a documented retention period and a deletion mechanism.
+- **Third-party processors**: Never integrate a service that receives personal data without noting it in the CR and confirming DPA status in `gdpr/processors.md`.
+- **DPIA**: Never begin implementation when a DPIA trigger applies without a completed `gdpr/DPIA-CR-XXX.md` reviewed by DPO or legal.
+- **RoPA**: Update `gdpr/RoPA.md` whenever a processing activity is added, changed, or removed.
+- **Human sign-off**: Never self-approve a GDPR review. All Approve decisions require human sign-off.
+
 ---
 
 ## Required Behavior
@@ -100,6 +111,7 @@ Claude MUST ALWAYS:
 | UI / frontend work | `.claude/agents/frontend.md` |
 | Code review | `.claude/agents/reviewer.md` |
 | Security review | `.claude/agents/security.md` |
+| GDPR / privacy | `.claude/agents/privacy.md` |
 | Testing / QA | `.claude/agents/qa.md` |
 
 ---

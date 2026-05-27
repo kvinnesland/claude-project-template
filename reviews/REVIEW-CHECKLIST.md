@@ -57,6 +57,19 @@
 - [ ] Loading, error, and empty states handled
 - [ ] Accessible markup (WCAG 2.1 AA minimum)
 
+## GDPR (if personal data is involved)
+- [ ] CR explicitly states whether personal data is involved
+- [ ] Legal basis documented (Art. 6 — and Art. 9 if sensitive data)
+- [ ] Data minimization verified — only minimum necessary data collected
+- [ ] Retention period defined in CR and `specs/entities.md`
+- [ ] Deletion mechanism implemented or scheduled
+- [ ] Third-party processors noted in CR and `gdpr/processors.md`
+- [ ] DPIA assessed — triggered or explicitly ruled out with reason
+- [ ] Data subject rights (access, erasure, portability, rectification) implementable
+- [ ] `gdpr/RoPA.md` updated
+- [ ] `reviews/GDPR-REVIEW.md` completed and passed
+- [ ] No PII in plain-text logs
+
 ## Frontend Localization (if frontend changes)
 - [ ] Date/time format authorized in CR and documented in `specs/ui-spec.md`
 - [ ] All dates rendered through shared formatting utility — no inline format strings

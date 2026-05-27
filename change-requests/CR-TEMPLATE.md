@@ -58,6 +58,36 @@
 **Security review required:** Yes (complete `reviews/SECURITY-REVIEW.md` before merge)
 ### Performance Impact
 
+### GDPR Impact
+
+**Involves personal data:** Yes / No
+*(If No: verified by reviewing all new fields, logs, API responses, and third-party calls)*
+
+**Personal data categories introduced or modified:**
+- [Field name]: [Category — basic identity / contact / device / behavioral / financial / sensitive Art.9]
+
+**Legal basis (Art. 6):** [basis — and Art. 9(2) exception if sensitive data]
+
+**Data minimization:** [Why is each data point strictly necessary?]
+
+**Retention period:** [Duration and deletion trigger]
+
+**Deletion mechanism:** [How and when is data deleted?]
+
+**Third-party processors receiving this data:** [Vendor — DPA status]
+
+**Cross-border transfer outside EEA:** Yes / No — [if Yes: transfer mechanism]
+
+**DPIA required:** Yes / No — [if Yes: link to gdpr/DPIA-CR-XXX.md]
+
+**Data subject rights impact:**
+- Access (Art. 15): [how supported]
+- Erasure (Art. 17): [how supported]
+- Portability (Art. 20): [how supported — if applicable]
+- Rectification (Art. 16): [how supported]
+
+**RoPA update required:** Yes / No
+
 ---
 
 ## Acceptance Criteria
