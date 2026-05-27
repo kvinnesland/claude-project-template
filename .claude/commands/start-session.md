@@ -4,9 +4,12 @@ Execute these steps in order at the start of every session.
 
 ## 0. Identify Session Owner
 
-Ask: "Who is running this session? (name or handle)"
-Record the answer in `sessions/CURRENT-STATE.md` under "Session Owner".
+Run: `git config user.name` and `git config user.email`
+Record the result in `sessions/CURRENT-STATE.md` under "Session Owner".
 Use this name in all ledger entries, decisions, and review reports this session.
+
+If git config returns empty: ask "What is your name or handle?" and set it with
+`git config user.name "Name"` before continuing.
 
 ## 1. Load Orchestration Files
 
