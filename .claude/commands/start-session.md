@@ -19,8 +19,11 @@ Read:
 - `sessions/DECISIONS.md`
 - `sessions/ARCHITECTURE-STATE.md`
 - `sessions/IMPLEMENTATION-LEDGER.md`
+- `team/GOVERNANCE.md` (if present)
+- `team/MEMBERS.md` (if present)
 
-If any file is missing: stop and flag it.
+If any session file is missing: stop and flag it.
+If `team/MEMBERS.md` is present but the current user (from git config) is not listed: flag it and ask them to add themselves before continuing.
 
 ## 2. Summarize Project State
 

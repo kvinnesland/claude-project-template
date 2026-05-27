@@ -84,11 +84,12 @@ Keep `main` always in a deployable state.
 ```
 .claude/            — Claude Code configuration, agents, commands
 sessions/           — Session state (read/updated every session)
-specs/              — Living specifications (vision, entities, flows, API, UI)
+specs/              — Living specifications (vision, entities, flows, API, UI, deployment)
 change-requests/    — One file per CR
-reviews/            — Review checklists (general, security, GDPR, architecture, UX)
+reviews/            — Review checklists (general, security, GDPR, architecture, UX, release)
 rules/              — Governance rules
 gdpr/               — GDPR compliance artifacts (RoPA, processors, DPIA)
+team/               — Team roster and governance roles
 validation/         — Validation scripts (run in CI)
 hooks/              — Git hooks
 .github/workflows/  — CI pipeline

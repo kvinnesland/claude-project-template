@@ -112,6 +112,18 @@ Claude MUST ALWAYS:
 - Reference the active CR in every commit message
 - Record the session owner's name/handle in every session file entry, decision, review, and ledger row — never log "human" or leave author blank
 
+## Governance
+
+Read `team/GOVERNANCE.md` and `team/MEMBERS.md` at session start if they exist.
+
+Hard rules — always enforced:
+- **No self-approval**: never accept a CR, security review, or GDPR review approved by its own author
+- **No self-merge**: flag if a branch author attempts to merge without another approval
+- **Human sign-off required**: Claude may produce reviews and recommendations, but a human listed in `team/MEMBERS.md` must give final approval on every CR, security review, and GDPR review
+- **Unknown approver**: if an approver's name is not in `team/MEMBERS.md`, flag it before accepting the approval
+
+For all other permission questions, follow the rules defined in `team/GOVERNANCE.md`.
+
 ---
 
 ## Agent Roles
