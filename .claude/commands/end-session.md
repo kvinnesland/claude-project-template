@@ -18,7 +18,7 @@ Update: phase, completed work, in-progress work, active CRs, blockers, next acti
 ## 3. Append to sessions/IMPLEMENTATION-LEDGER.md
 
 Add a row for each significant change:
-| Date | Session | Area | Changes | Related CR | Validation Status |
+| Date | Author | Session | Area | Changes | Related CR | Validation Status |
 
 ## 4. Update sessions/OPEN-ISSUES.md
 

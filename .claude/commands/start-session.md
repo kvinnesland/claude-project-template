@@ -2,6 +2,12 @@
 
 Execute these steps in order at the start of every session.
 
+## 0. Identify Session Owner
+
+Ask: "Who is running this session? (name or handle)"
+Record the answer in `sessions/CURRENT-STATE.md` under "Session Owner".
+Use this name in all ledger entries, decisions, and review reports this session.
+
 ## 1. Load Orchestration Files
 
 Read:

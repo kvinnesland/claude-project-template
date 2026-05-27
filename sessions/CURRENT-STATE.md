@@ -5,6 +5,9 @@
 ## Current Phase
 BOOTSTRAP — Project initialized. No implementation started.
 
+## Session Owner
+[Name / handle of the person running the current session]
+
 ## Current Objectives
 Define product vision and requirements before starting CR-001.
 

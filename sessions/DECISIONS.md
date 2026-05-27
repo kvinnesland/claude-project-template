@@ -15,7 +15,7 @@ DECISION: [what was decided]
 ALTERNATIVES CONSIDERED: [what else was evaluated]
 RATIONALE: [why this option]
 CONSEQUENCES: [what this enables or constrains]
-DECIDED BY: human | Claude | both
+DECIDED BY: [Name / handle] | Claude | [Name / handle] + Claude
 ```
 
 ## Decisions

@@ -94,7 +94,8 @@
 ## Output
 
 ```
-SECURITY REVIEW — [Date] — CR-XXX
+SECURITY REVIEW — YYYY-MM-DD — CR-XXX
+Reviewed by: [Name / handle] (human sign-off required for Approve)
 
 PASS:
 - [item]
@@ -106,7 +107,6 @@ N/A:
 - [item] — [reason]
 
 RECOMMENDATION: Approve | Request Changes | Reject
-Reviewed by: human | Claude (human sign-off required for Approve)
 ```
 
 A single FAIL without accepted remediation plan = Request Changes.

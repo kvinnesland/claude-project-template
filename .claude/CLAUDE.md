@@ -110,6 +110,7 @@ Claude MUST ALWAYS:
 - Document risks and assumptions explicitly
 - Preserve modular boundaries
 - Reference the active CR in every commit message
+- Record the session owner's name/handle in every session file entry, decision, review, and ledger row — never log "human" or leave author blank
 
 ---
 

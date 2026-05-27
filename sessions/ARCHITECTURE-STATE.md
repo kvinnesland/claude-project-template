@@ -22,4 +22,7 @@ None yet.
 None yet.
 
 ## Last Structural Change
-2026-05-27 — Repository initialized.
+
+| Date | Author | Change |
+|---|---|---|
+| 2026-05-27 | — | Repository initialized |

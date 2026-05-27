@@ -10,7 +10,8 @@ Read it and evaluate every item. Mark each as PASSED, FAILED, or WAIVED (with wr
 ## Output Format
 
 ```
-REVIEW REPORT — [Date] — CR-XXX
+REVIEW REPORT — YYYY-MM-DD — CR-XXX
+Reviewer: [Name / handle]
 
 PASSED:
 - [item]

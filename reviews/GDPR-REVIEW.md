@@ -88,7 +88,8 @@
 ## Output
 
 ```
-GDPR REVIEW — [Date] — CR-XXX
+GDPR REVIEW — YYYY-MM-DD — CR-XXX
+Reviewed by: [Name / handle] (human sign-off required for Approve)
 
 PASS:
 - [item]
@@ -100,7 +101,6 @@ N/A:
 - [item] — [reason]
 
 RECOMMENDATION: Approve | Request Changes | Reject
-Reviewed by: [Name / Claude] — human sign-off required for Approve
 ```
 
 A FAIL on Legal Basis, DPIA (when triggered), or Sensitive Data = Reject until resolved.

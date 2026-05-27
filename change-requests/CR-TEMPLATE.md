@@ -2,6 +2,9 @@
 
 **Status:** Draft | In Review | Approved | In Progress | Done | Rejected
 **Created:** YYYY-MM-DD
+**Author:** [Name / handle]
+**Approved by:** [Name / handle — required before status moves to Approved]
+**Approved date:** YYYY-MM-DD | —
 
 ---
 

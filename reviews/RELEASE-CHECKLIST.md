@@ -83,7 +83,8 @@
 ## Output
 
 ```
-RELEASE CHECKLIST — [version] — [date]
+RELEASE CHECKLIST — vX.Y.Z — YYYY-MM-DD
+Release owner: [Name / handle]
 
 PASSED:
 - [item]
