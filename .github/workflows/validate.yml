@@ -15,16 +15,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --ignore-scripts 2>/dev/null || true
+      - run: npm ci
 
       - name: Run traceability validation
-        run: npx ts-node validation/traceability-validation.ts
+        run: npm run validate:traceability
 
       - name: Check commit messages reference a CR
         if: github.event_name == 'pull_request'
@@ -43,16 +42,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --ignore-scripts 2>/dev/null || true
+      - run: npm ci
 
       - name: Run architecture validation
-        run: npx ts-node validation/architecture-validation.ts
+        run: npm run validate:architecture
 
   spec:
     name: Spec validation
@@ -60,16 +58,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --ignore-scripts 2>/dev/null || true
+      - run: npm ci
 
       - name: Run spec validation
-        run: npx ts-node validation/spec-validation.ts
+        run: npm run validate:spec
 
   security:
     name: Security validation
@@ -79,13 +76,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
 
       - name: Run security validation (heuristics)
-        run: npx ts-node validation/security-validation.ts
+        run: npm run validate:security
 
       - name: Secret scanning (TruffleHog)
         uses: trufflesecurity/trufflehog@main
@@ -96,12 +95,7 @@ jobs:
           extra_args: --only-verified
 
       - name: Dependency vulnerability audit
-        run: |
-          if [ -f package.json ]; then
-            npm audit --audit-level=high
-          else
-            echo "No package.json found — skipping npm audit (add when project is initialized)"
-          fi
+        run: npm audit --audit-level=high
 
   gdpr:
     name: GDPR validation
@@ -109,13 +103,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --ignore-scripts 2>/dev/null || true
+      - run: npm ci
 
       - name: Run GDPR validation
-        run: npx ts-node validation/gdpr-validation.ts
+        run: npm run validate:gdpr

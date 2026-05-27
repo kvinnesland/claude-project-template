@@ -1,0 +1,18 @@
+{
+  "name": "claude-project-template",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Validation scripts for the Claude Project Template governance framework",
+  "scripts": {
+    "validate": "npm run validate:traceability && npm run validate:architecture && npm run validate:spec && npm run validate:security && npm run validate:gdpr",
+    "validate:traceability": "ts-node validation/traceability-validation.ts",
+    "validate:architecture": "ts-node validation/architecture-validation.ts",
+    "validate:spec": "ts-node validation/spec-validation.ts",
+    "validate:security": "ts-node validation/security-validation.ts",
+    "validate:gdpr": "ts-node validation/gdpr-validation.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
