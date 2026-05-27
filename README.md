@@ -34,6 +34,7 @@ Commands like `/start-session` are **Claude Code custom commands** — type them
 | `/implement` | After a CR is approved — begins implementation |
 | `/review` | Before merging — runs the full review checklist |
 | `/gdpr-report` | Consolidated GDPR compliance report across all sources |
+| `/security-report` | Consolidated security posture report across all sources |
 
 ## How agent roles work
 

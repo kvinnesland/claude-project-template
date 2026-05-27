@@ -139,6 +139,7 @@ Claude MUST ALWAYS:
 | `/review` | Run full review checklist |
 | `/implement` | Begin implementation from an approved CR |
 | `/gdpr-report` | Consolidated GDPR compliance report across all sources |
+| `/security-report` | Consolidated security posture report across all sources |
 
 ---
 
