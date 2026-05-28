@@ -1,86 +1,68 @@
-# Review Report — CR-001: Add email notification on account creation
+# Review Report — CR-001: Add item library with search and filters
 
 **Date:** 2026-01-22
 **Reviewer:** ada
-**Branch:** feature/CR-001-email-notifications
+**Branch:** feature/CR-001-item-library
 
 ---
 
 ## Traceability
-- [x] Change covered by approved CR-001
-- [x] Specs updated before code — flows.md, entities.md, nfr.md updated in first commit
+- [x] Covered by approved CR-001
+- [x] specs/flows.md and specs/ui-spec.md updated before code
 - [x] All commits reference CR-001
 
 ## Spec Alignment
-- [x] Implementation matches specs — EmailService and SendWelcomeEmail job match flows.md
-- [x] No undocumented behavior — async retry logic documented in CR under Risks
+- [x] Library page matches flows.md "Browse library" flow
+- [x] Card layout matches ui-spec.md component definition
+- [x] No undocumented behaviour
 
 ## Architecture
-- [x] Module boundaries respected — EmailService lives in services/, job in jobs/
-- [x] No forbidden imports — EmailService does not import from repository layer directly
-- [x] No circular dependencies — verified with `madge`
-- [x] Layering rules followed
+- [x] New components in `components/` — no boundary violations
+- [x] `useItemSearch` hook contains all filter logic — not duplicated in components
+- [x] No circular dependencies
 
 ## Type Safety
-- [x] All inputs and outputs typed — `SendWelcomeEmailPayload` interface defined
-- [x] No `any` usage
+- [x] `ItemCard`, `SearchBar`, `FilterPanel` fully typed
+- [x] `useItemSearch` return type explicit
 
 ## Testing
-- [x] Unit tests for EmailService (mocked client) — 6 cases
-- [x] Unit tests for token generation and verification — 4 cases
-- [x] Integration test: registration → job → SendGrid sandbox
-- [x] All existing tests pass
+- [x] Unit: `useItemSearch` — 8 cases covering search, filters, empty results, combinations
+- [x] Integration: library page renders correct cards for authenticated user
+- [x] E2E: search + filter combination
 
 ## Security
-- [x] Threat Model completed in CR-001 and reviewed
-- [x] SECURITY-REVIEW-CR-001.md completed — all items passed
-- [x] No new unauthenticated endpoints
-- [x] Email address validated with zod before use
-- [x] SENDGRID_API_KEY read from env — never hardcoded
-- [x] Email address masked in logs: `a***@domain.com`
-- [x] No dangerous patterns
-- [x] @sendgrid/mail@8.1.0 — npm audit clean, documented in CR
-- [x] Secret scanning passed in CI
+- [x] Route gated — unauthenticated users redirected to login
+- [x] Read-only view — no inputs persisted, no new endpoints
+- [x] No secrets, no dangerous patterns
+- [x] No dependencies added
 
 ## Performance
-- [x] Registration response time unaffected — email job async
-- [x] No N+1 queries
+- [x] Single fetch on mount — no N+1
+- [x] Client-side filtering — no unnecessary re-fetches
 
 ## Observability
-- [x] Structured logging on job start, success, and failure
-- [x] Masked email in all log lines
+- [x] N/A — read-only view, no flows requiring logging
 
 ## Maintainability
-- [x] EmailService is single-responsibility
-- [x] Token logic isolated in `lib/tokens.ts`
+- [x] `useItemSearch` single-responsibility — easy to extend with new filter types
 
 ## UX
-- N/A — no frontend changes
+- [x] Matches ui-spec.md
+- [x] Empty state handled — "No results" message shown
+- [x] Loading state handled
+- [x] Accessible — search input has label, cards are keyboard-navigable
 
 ## GDPR
-- [x] CR explicitly states personal data involved: email, name
-- [x] Legal basis: Art. 6(1)(b) — performance of contract
-- [x] Data minimization verified — only name and email in payload
-- [x] Retention: SendGrid 30 days, token deleted on use/expiry
-- [x] Deletion: account deletion suppresses SendGrid contact
-- [x] SendGrid noted in gdpr/processors.md, DPA confirmed
-- [x] DPIA: not triggered — low-risk transactional flow
-- [x] Data subject rights implementable (erasure via account delete)
-- [x] RoPA updated
-- [x] GDPR-REVIEW-CR-001.md completed — all items passed
-- [x] No PII in plain-text logs
+- [x] N/A — GDPR Applicable: false
 
 ## Frontend Localization
-- N/A — no frontend changes
+- [x] No dates or units displayed
+- [x] All visible strings use i18n utility — no raw literals in JSX
 
 ---
 
-## Summary
-
-PASSED: all 47 items
+PASSED: all items
 FAILED: none
 WAIVED: none
 
 **RECOMMENDATION: Approve**
-
-Solid implementation. Security and GDPR handled thoroughly. Async job pattern is correct for email delivery. Token expiry and masking in logs are particularly well done.

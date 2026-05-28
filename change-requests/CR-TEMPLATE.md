@@ -3,14 +3,16 @@
 **Status:** Draft | In Review | Approved | In Progress | Done | Rejected
 **Created:** YYYY-MM-DD
 **Author:** [Name / handle]
-**Approved by:** [Name / handle — required before status moves to Approved]
+**Approved by:** [Name / handle] | self
 **Approved date:** YYYY-MM-DD | —
 
 ---
 
 ## Business Goal
-## Problem Statement
+[Why does this matter? What user or business problem does it solve?]
+
 ## Proposed Solution
+[What will be built? High-level — not implementation details.]
 
 ---
 
@@ -27,69 +29,47 @@
 - [ ] specs/nfr.md
 
 ### Affected Components
-### Database Impact
-### API Impact
-### UX Impact
-### Security Impact and Threat Model
+[Which modules, pages, services, or jobs are touched?]
 
-**Attack surface introduced:**
-[What new entry points, inputs, or data flows does this CR add?]
+### Security Impact
+[Brief assessment. If low risk: state why — e.g. "Read-only, no new endpoints, no auth changes."]
 
-**Trust boundaries crossed:**
-[Does data cross user→API, API→DB, service→service, or external boundaries? How is it validated?]
-
-**Threat actors:**
-- [ ] Unauthenticated external user
-- [ ] Authenticated user accessing other users' data
-- [ ] Malicious input / injection
-- [ ] Insider / compromised service
-
-**OWASP Top 10 mapping:**
-- [ ] A01 Broken Access Control — [relevant / not relevant: reason]
-- [ ] A02 Cryptographic Failures — [relevant / not relevant: reason]
-- [ ] A03 Injection — [relevant / not relevant: reason]
-- [ ] A04 Insecure Design — [relevant / not relevant: reason]
-- [ ] A05 Security Misconfiguration — [relevant / not relevant: reason]
-- [ ] A06 Vulnerable Components — [relevant / not relevant: reason]
-- [ ] A07 Authentication Failures — [relevant / not relevant: reason]
-- [ ] A08 Software Integrity Failures — [relevant / not relevant: reason]
-- [ ] A09 Logging Failures — [relevant / not relevant: reason]
-- [ ] A10 SSRF — [relevant / not relevant: reason]
-
-**New dependencies added:** [name@version — CVE check result]
-
-**Security review required:** Yes (complete `reviews/SECURITY-REVIEW.md` before merge)
-### Performance Impact
+> **Include a full Threat Model if any of these apply:**
+> new API endpoints · auth or access control changes · file uploads · external integrations · payment handling · user-generated content
+>
+> Full Threat Model format:
+> - Attack surface introduced
+> - Trust boundaries crossed
+> - Threat actors (unauthenticated user / authenticated user accessing others' data / malicious input / insider)
+> - OWASP Top 10 mapping (A01–A10) — mark each relevant/not relevant with reason
+> - New dependencies: name@version — CVE check result
+> - Security review required: Yes → complete `reviews/SECURITY-REVIEW.md` before merge
 
 ### GDPR Impact
+[If `GDPR Applicable: false` in CURRENT-STATE.md, write: "N/A — GDPR not applicable to this project."]
+[If applicable and no personal data: state "No personal data introduced or modified — verified by reviewing new fields, logs, API responses, and third-party calls."]
 
-**Involves personal data:** Yes / No
-*(If No: verified by reviewing all new fields, logs, API responses, and third-party calls)*
+> **Include a full GDPR section if personal data is introduced, modified, or removed:**
+> - Personal data categories and fields
+> - Legal basis (Art. 6) — and Art. 9(2) if sensitive data
+> - Data minimization rationale
+> - Retention period and deletion trigger
+> - Deletion mechanism
+> - Third-party processors receiving data and DPA status
+> - Cross-border transfer outside EEA and transfer mechanism
+> - DPIA required: Yes/No — link to gdpr/DPIA-CR-XXX.md if yes
+> - Data subject rights: access / erasure / portability / rectification
+> - RoPA update required: Yes/No
+> - Complete `reviews/GDPR-REVIEW.md` before merge
 
-**Personal data categories introduced or modified:**
-- [Field name]: [Category — basic identity / contact / device / behavioral / financial / sensitive Art.9]
+### Performance Impact
+[Expected impact on response time, query count, or resource use. "None" is a valid answer if justified.]
 
-**Legal basis (Art. 6):** [basis — and Art. 9(2) exception if sensitive data]
+### Database Impact
+[New tables, columns, indexes, or migrations. "None" if no schema changes.]
 
-**Data minimization:** [Why is each data point strictly necessary?]
-
-**Retention period:** [Duration and deletion trigger]
-
-**Deletion mechanism:** [How and when is data deleted?]
-
-**Third-party processors receiving this data:** [Vendor — DPA status]
-
-**Cross-border transfer outside EEA:** Yes / No — [if Yes: transfer mechanism]
-
-**DPIA required:** Yes / No — [if Yes: link to gdpr/DPIA-CR-XXX.md]
-
-**Data subject rights impact:**
-- Access (Art. 15): [how supported]
-- Erasure (Art. 17): [how supported]
-- Portability (Art. 20): [how supported — if applicable]
-- Rectification (Art. 16): [how supported]
-
-**RoPA update required:** Yes / No
+### API Impact
+[New or modified endpoints. "None" if no API changes.]
 
 ---
 
@@ -102,7 +82,7 @@
 - [ ] E2E:
 
 ## Rollback Strategy
-## Migration Strategy
-## Risks
+[How to revert — e.g. revert commits, run rollback migration, disable feature flag.]
+
 ## Dependencies
-## Validation Notes
+[Other CRs or external work that must be done first. "None" if independent.]
