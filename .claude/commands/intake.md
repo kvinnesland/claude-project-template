@@ -9,8 +9,9 @@ Works at any stage — first session or ongoing.
 
 ## When to Use
 
-- First time opening this project in Claude Code
+- First time opening this project in Claude Code — **with or without existing documentation**
 - You have a PRD, vision document, or spec to import
+- You have nothing yet — Claude will guide you through setup with a few questions
 - You want to feed in an existing change request or backlog item
 - You want to update specs from a partial document or meeting notes
 - You're extending the project with a new area of scope
