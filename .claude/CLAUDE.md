@@ -175,6 +175,7 @@ For all permission questions, follow the rules defined in `team/GOVERNANCE.md`.
 | Command | Purpose |
 |---|---|
 | `/intake` | First session setup, import PRD/spec/CR documents, feed in backlog |
+| `/onboarding` | New team member setup — verify local env, register in MEMBERS.md, load project state |
 | `/start-session` | Load state, identify blockers, generate plan |
 | `/end-session` | Summarize work, update all orchestration files |
 | `/interview-and-define` | Interview plan, sharpen domain language, update CONTEXT.md |

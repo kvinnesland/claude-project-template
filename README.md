@@ -27,6 +27,7 @@ Commands like `/start-session` are **Claude Code custom commands** — type them
 | Command | When to use |
 |---|---|
 | `/intake` | **Start here** — works with or without existing docs. Paste a PRD, spec, or CR — or start with nothing and Claude guides you through setup |
+| `/onboarding` | **New team member** — verifies local setup, registers you in MEMBERS.md, loads project state |
 | `/start-session` | Beginning of every subsequent session — loads state and produces a plan |
 | `/end-session` | End of every session — updates all state files |
 | `/interview-and-define` | First session, or when domain language is unclear |
