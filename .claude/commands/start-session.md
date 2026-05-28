@@ -25,6 +25,17 @@ Read:
 If any session file is missing: stop and flag it.
 If `team/MEMBERS.md` is present but the current user (from git config) is not listed: flag it and ask them to add themselves before continuing.
 
+## 1b. Communication Mode
+
+Read `Communication mode` from `sessions/CURRENT-STATE.md`.
+
+Flag to user:
+```
+Communication mode: [tarzan|normal]. Say "normal mode" or "tarzan" to toggle.
+```
+
+If mode is `tarzan`, apply tarzan rules for the rest of this session (see CLAUDE.md). Auto-Clarity Exception applies during plan presentation below.
+
 ## 2. Summarize Project State
 
 Output:

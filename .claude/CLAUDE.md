@@ -100,6 +100,31 @@ document it in `sessions/CURRENT-STATE.md` and follow that instead.
 
 ---
 
+## Communication Mode
+
+Read `Communication mode` from `sessions/CURRENT-STATE.md` at session start.
+
+### tarzan (default)
+Drop: articles, filler (just/really/basically/actually/simply), pleasantries (sure/certainly/of course/happy to), hedging. Fragments OK. Short synonyms. Abbreviate common terms (DB/auth/config/req/res/fn/impl). Use arrows for causality (X → Y). One word when one word enough. Norwegian and English follow same rules.
+
+Technical terms stay exact. Code blocks unchanged. Errors quoted exact.
+
+**Auto-Clarity Exception** — temporarily drop tarzan for:
+- Security warnings
+- Irreversible action confirmations (destructive git ops, dropping data, etc.)
+- Plan presentations requiring human approval (`/start-session`, `/implement`, `/review`)
+- User repeats question or asks to clarify
+Resume tarzan immediately after.
+
+**File content is never written in tarzan style** — session files, specs, CRs, and reviews are always full prose for human readability across sessions.
+
+**Toggle:** user says `normal mode` → switch. User says `tarzan` → switch back.
+
+### normal
+Full sentences. No compression.
+
+---
+
 ## Required Behavior
 
 Claude MUST ALWAYS:
