@@ -79,7 +79,7 @@ function checkCRStructure() {
 
   const crFiles = fs
     .readdirSync(CR_DIR)
-    .filter((f) => f.startsWith("CR-") && f.endsWith(".md"));
+    .filter((f) => f.startsWith("CR-") && f.endsWith(".md") && !f.includes("TEMPLATE"));
 
   if (crFiles.length === 0) {
     skip(CHECK, "No CR files found yet");
@@ -227,12 +227,43 @@ function checkFrontendLocalization() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// CHECK 6: team/MEMBERS.md has no placeholder rows (team mode only)
+// ─────────────────────────────────────────────────────────────────────────────
+function checkMembersPlaceholders() {
+  const CHECK = "team/MEMBERS.md has no placeholder rows";
+
+  // Solo projects don't require MEMBERS.md to be populated
+  const state = fs.existsSync(path.join(ROOT, "sessions/CURRENT-STATE.md"))
+    ? fs.readFileSync(path.join(ROOT, "sessions/CURRENT-STATE.md"), "utf-8")
+    : "";
+  const modeMatch = state.match(/^##\s*Project Mode\s*\n([^\n]+)/m);
+  const isSolo = !modeMatch || modeMatch[1].trim().startsWith("solo");
+  if (isSolo) {
+    skip(CHECK, "Project Mode is solo — team member registration not required");
+    return;
+  }
+
+  const membersPath = path.join(ROOT, "team/MEMBERS.md");
+  if (!fs.existsSync(membersPath)) {
+    fail(CHECK, "team/MEMBERS.md not found — team mode requires all members to be registered");
+    return;
+  }
+  const content = fs.readFileSync(membersPath, "utf-8");
+  if (content.includes("| [name]") || content.includes("| [email]")) {
+    fail(CHECK, "team/MEMBERS.md still contains placeholder rows — replace with real team members");
+  } else {
+    pass(CHECK);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Run all checks and report
 // ─────────────────────────────────────────────────────────────────────────────
 checkSessionFilesExist();
 checkNoPlaceholders();
 checkCommitMessages();
 checkCRStructure();
+checkMembersPlaceholders();
 checkFrontendLocalization();
 
 console.log("\n=== Traceability Validation Report ===\n");

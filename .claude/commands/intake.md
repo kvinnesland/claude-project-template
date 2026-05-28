@@ -57,12 +57,14 @@ If this is a BOOTSTRAP project and no document was provided:
 
 1. **Initialize placeholders**: replace any remaining `YYYY-MM-DD` in session files with today's date.
 
-2. **Ask five questions, one at a time:**
+2. **Ask seven questions, one at a time:**
    - "What does this product do, and who is it for?"
    - "What is the single most important thing it must do in version 1?"
    - "What is explicitly out of scope for now?"
    - "Do you have a tech stack in mind, or should we decide that later?"
    - "Where will this be deployed? (e.g. Vercel, AWS, GCP, Azure, Fly.io, Heroku, Docker/Kubernetes, self-hosted — or unknown for now)"
+   - "Are you working solo or with a team? (solo = lighter process, team = full governance)"
+   - "Does this project collect or process personal data about users? (yes = GDPR governance active, no = GDPR checks skipped)"
 
 3. **Populate from answers:**
    - Write `specs/vision.md` from the first two answers
@@ -70,6 +72,8 @@ If this is a BOOTSTRAP project and no document was provided:
    - Note tech stack preference in `sessions/CURRENT-STATE.md`
    - If deployment target is known: populate `specs/deployment.md` with platform, environment table, and a deployment skeleton appropriate for that platform (see deployment scaffolds below)
    - If deployment target is unknown: note "Deployment target not yet decided" in `specs/deployment.md` Status field and `sessions/CURRENT-STATE.md`
+   - Set `Project Mode: solo` or `Project Mode: team` in `sessions/CURRENT-STATE.md`
+   - Set `GDPR Applicable: true` or `GDPR Applicable: false` in `sessions/CURRENT-STATE.md`
 
 4. **Deployment scaffolds** — use the matching skeleton when populating `specs/deployment.md`:
 

@@ -31,7 +31,37 @@ Before ANY implementation work, Claude MUST:
 6. If `CONTEXT.md` exists at the repo root, read it
 7. Produce an explicit implementation plan and present it before proceeding
 
+Also read at startup:
+- `Project Mode` from `sessions/CURRENT-STATE.md` — `solo` or `team` (default: solo)
+- `GDPR Applicable` from `sessions/CURRENT-STATE.md` — `true` or `false` (default: false)
+
 If any of these files are missing or incomplete, stop and flag it.
+
+---
+
+## Project Mode
+
+### solo (default)
+One person working alone. Lighter process:
+- CRs still required, but minor CRs (`CR-MINOR-TEMPLATE.md`) acceptable for small fixes
+- No team member check — `team/MEMBERS.md` not required
+- Self-approval always fine
+- Review still required before merge, but minor checklist acceptable for minor CRs
+
+### team
+Multiple contributors. Full governance:
+- Feature CRs use `CR-TEMPLATE.md` — full impact analysis required
+- Members must be registered in `team/MEMBERS.md`
+- Follow permission rules in `team/GOVERNANCE.md`
+
+---
+
+## GDPR Applicable Flag
+
+Read `GDPR Applicable` from `sessions/CURRENT-STATE.md`.
+
+- `false` (default): skip all GDPR sections in CRs and reviews, skip GDPR validation in CI
+- `true`: full GDPR governance applies — GDPR Impact section required in every feature CR, `reviews/GDPR-REVIEW.md` required before merge, GDPR validation runs in CI
 
 ---
 

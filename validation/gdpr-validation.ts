@@ -258,8 +258,26 @@ function checkPIIInURLs() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Read GDPR Applicable flag from sessions/CURRENT-STATE.md
+// ─────────────────────────────────────────────────────────────────────────────
+function isGDPRApplicable(): boolean {
+  const state = readFile("sessions/CURRENT-STATE.md");
+  if (!state) return true; // default to applicable if file missing
+  const match = state.match(/^##\s*GDPR Applicable\s*\n([^\n]+)/m);
+  if (!match) return true;
+  return !match[1].trim().startsWith("false");
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Run all checks
 // ─────────────────────────────────────────────────────────────────────────────
+if (!isGDPRApplicable()) {
+  console.log("\n=== GDPR Validation Report ===\n");
+  console.log("– [SKIP] GDPR Applicable is set to false in sessions/CURRENT-STATE.md — all checks skipped");
+  console.log("\n7 checks — 0 failed\n");
+  process.exit(0);
+}
+
 checkRoPAExists();
 checkProcessorsFile();
 checkEntitiesPIIClassification();

@@ -11,6 +11,12 @@ BOOTSTRAP — Project initialized. No implementation started.
 ## Communication Mode
 tarzan   <!-- tarzan | normal — say "normal mode" or "tarzan" to toggle -->
 
+## Project Mode
+solo   <!-- solo | team — set during /intake. solo: lighter process, no team checks. team: full governance -->
+
+## GDPR Applicable
+false   <!-- true | false — set during /intake. false: GDPR validation and review sections skipped -->
+
 ## Current Objectives
 Define product vision and requirements before starting CR-001.
 

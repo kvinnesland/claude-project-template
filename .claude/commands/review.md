@@ -1,11 +1,20 @@
 # /review
 
-Run the full review checklist before any merge.
+Run the review checklist before any merge.
+
+## 0. Determine Review Depth
+
+Check the CR type:
+- Minor CR (`CR-MINOR-TEMPLATE.md`) → use `reviews/REVIEW-MINOR-CHECKLIST.md`
+- Feature CR (`CR-TEMPLATE.md`) → use `reviews/REVIEW-CHECKLIST.md`
+
+If `GDPR Applicable: false` in `sessions/CURRENT-STATE.md`: skip the GDPR section of the checklist.
 
 ## Checklist
 
-The authoritative checklist lives in `reviews/REVIEW-CHECKLIST.md`.
-Read it and evaluate every item. Mark each as PASSED, FAILED, or WAIVED (with written reason).
+Read the appropriate checklist and evaluate every item. Mark each as PASSED, FAILED, or WAIVED (with written reason).
+
+See `examples/REVIEW-CR-001.md` for a complete filled-in example.
 
 ## Output Format
 

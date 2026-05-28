@@ -11,8 +11,8 @@
 
 commit_msg=$(cat "$1")
 
-# Allow merge commits, revert commits, and infra commits explicitly tagged INFRA
-if echo "$commit_msg" | grep -qE '^(Merge|Revert|INFRA):'; then
+# Allow exempt commit types — prefix or suffix form
+if echo "$commit_msg" | grep -qiE '^(Merge|Revert|Initial|INFRA:|DOCS:|CHORE:)|\((INFRA|DOCS|CHORE)\)$'; then
   exit 0
 fi
 
@@ -20,11 +20,15 @@ fi
 if ! echo "$commit_msg" | grep -qE 'CR-[0-9]+'; then
   echo ""
   echo "ERROR: Commit message must reference a Change Request."
-  echo "  Expected format: <description> (CR-001)"
-  echo "  Example: Add user login endpoint (CR-003)"
   echo ""
-  echo "  For infrastructure commits not tied to a CR, prefix with INFRA:"
-  echo "  Example: INFRA: update .gitignore"
+  echo "  Option 1 — CR reference (suffix):"
+  echo "    Add user login endpoint (CR-003)"
+  echo ""
+  echo "  Option 2 — exempt types (no CR needed):"
+  echo "    INFRA: update .gitignore"
+  echo "    DOCS: fix typo in README"
+  echo "    CHORE: bump dependencies"
+  echo "    or suffix: Add something (INFRA)"
   echo ""
   exit 1
 fi

@@ -168,7 +168,7 @@ function checkCRThreatModels() {
 
   const crFiles = fs
     .readdirSync(crDir)
-    .filter((f) => f.startsWith("CR-") && f.endsWith(".md"));
+    .filter((f) => f.startsWith("CR-") && f.endsWith(".md") && !f.includes("TEMPLATE"));
 
   if (crFiles.length === 0) {
     skip(CHECK, "No CR files found yet");
