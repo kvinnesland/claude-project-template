@@ -51,7 +51,8 @@ function checkCommitMessages() {
 
     const lines = log.split("\n").filter(Boolean);
     const crPattern = /CR-\d+/;
-    const exemptPattern = /^(Merge|Revert|INFRA:)/;
+    // Exempt: infra/docs/chore commits (prefix or suffix), merges, reverts
+    const exemptPattern = /^(Merge|Revert|Initial|INFRA:|DOCS:|CHORE:)|\((INFRA|DOCS|CHORE)\)$/i;
 
     const violations = lines.filter(
       (msg) => !crPattern.test(msg) && !exemptPattern.test(msg)
@@ -135,7 +136,9 @@ function checkNoPlaceholders() {
   for (const rel of sessionFiles) {
     const fullPath = path.join(ROOT, rel);
     if (!fs.existsSync(fullPath)) continue;
-    const content = fs.readFileSync(fullPath, "utf-8");
+    const raw = fs.readFileSync(fullPath, "utf-8");
+    // Strip fenced code blocks (``` ... ```) before checking — format examples are not placeholders
+    const content = raw.replace(/```[\s\S]*?```/g, "");
     if (content.includes("YYYY-MM-DD")) {
       violations.push(rel);
     }
