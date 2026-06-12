@@ -1,6 +1,6 @@
 # IMPLEMENTATION-LEDGER.md
 
-> Append-only audit log. Never delete rows.
+> Active audit log — last 90 days. Older rows archived to `sessions/IMPLEMENTATION-LEDGER-ARCHIVE.md` at end-session.
 
 | Date | Author | Session | Area | Changes | Related CR | Validation Status |
 |---|---|---|---|---|---|---|
