@@ -30,6 +30,17 @@ Add a row for each significant change:
 
 List risks, tech debt, assumptions, and unresolved dependencies.
 
-## 6. Document Next Actions
+## 6. Archive Completed CRs
+
+Move any CR with status `Done` or `Rejected` to `change-requests/archive/`.
+
+```bash
+mv change-requests/CR-XXX-*.md change-requests/archive/
+```
+
+This keeps `change-requests/` to active work only — reducing context loaded at next session start.
+Archived CRs remain searchable and form the audit trail.
+
+## 7. Document Next Actions
 
 List recommended actions for next session in priority order. Be explicit.

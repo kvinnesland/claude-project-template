@@ -25,7 +25,7 @@ Before ANY implementation work, Claude MUST:
 
 1. Read `sessions/CURRENT-STATE.md`
 2. Read `sessions/OPEN-ISSUES.md`
-3. Read all active change requests in `/change-requests`
+3. Read all active change requests in `change-requests/` (exclude `change-requests/archive/`)
 4. Read impacted specs in `/specs`
 5. Validate architecture consistency against `sessions/ARCHITECTURE-STATE.md`
 6. If `CONTEXT.md` exists at the repo root, read it
